@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class DateComponent extends React.Component {
+class DateDayMonthYear extends React.Component {
 	constructor () {
 		super();
 
 		var DateToday = new Date(),
 		console.log(DateToday),
 	};
+
+}
+class WeekNav extends React.Component {
+	constructor () {
+		super();
+
+		var DateToday = new Date(),
+		console.log(DateToday),
+	};
+	render() {
+		<div>
+			<WeekNav/>
+		</div>
+	}
 
 }
 
