@@ -55,13 +55,13 @@ class WeekDaysNav extends React.Component {
 }
 
 const WEEKDAYS = [
-  {name: 'Domingo'    ,kanji: '日', weekday: false},
-  {name: 'Lunes'      ,kanji: '月', weekday: true },
-  {name: 'Martes'     ,kanji: '火', weekday: true },
-  {name: 'Miercoles'  ,kanji: '水', weekday: true },
-  {name: 'Jueves'     ,kanji: '木', weekday: true },
-  {name: 'Viernes'    ,kanji: '金', weekday: true },
-  {name: 'Sabado'     ,kanji: '土', weekday: false},
+  {name: 'Domingo'    ,kanji: '日', weekday: false , jsnumber: 0},
+  {name: 'Lunes'      ,kanji: '月', weekday: true  , jsnumber: 1},
+  {name: 'Martes'     ,kanji: '火', weekday: true  , jsnumber: 2},
+  {name: 'Miercoles'  ,kanji: '水', weekday: true  , jsnumber: 3},
+  {name: 'Jueves'     ,kanji: '木', weekday: true  , jsnumber: 4},
+  {name: 'Viernes'    ,kanji: '金', weekday: true  , jsnumber: 5},
+  {name: 'Sabado'     ,kanji: '土', weekday: false , jsnumber: 6},
 ];
 
 export default WeekDaysNav;
