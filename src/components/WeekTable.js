@@ -20,9 +20,13 @@ class WeekDaysNav extends React.Component {
 			{
 				WEEKDAYS.map((weekday) =>{
 					let isWeekDay = weekday.weekday;
+					let isToday   = new Date().getDay();
 					return(
 						<th key={weekday.name}>
-						{ isWeekDay ? (
+						{ isWeekDay && isToday == weekday.jsnumber ? (
+								<span className="color-green">{weekday.kanji}</span>
+							)
+						:isWeekDay ? (
 								<span className="color-red">{weekday.kanji}</span>
 							):(
 								<span className="color-blue">{weekday.kanji}</span>
@@ -53,7 +57,7 @@ class WeekDaysNav extends React.Component {
 	}
 
 }
-
+//{if (isToday == weekday.jsnumber) { 'background-green' }}
 const WEEKDAYS = [
   {name: 'Domingo'    ,kanji: '日', weekday: false , jsnumber: 0},
   {name: 'Lunes'      ,kanji: '月', weekday: true  , jsnumber: 1},
