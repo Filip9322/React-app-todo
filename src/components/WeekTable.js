@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
+import './WeekTable.css';
 
 // class DateDayMonthYear extends React.Component {
 // 	constructor () {
@@ -17,9 +18,15 @@ class WeekDaysNav extends React.Component {
 			{
 				WEEKDAYS.map((weekday) =>{
 					console.log(this);
+					let isWeekDay = weekday.weekday;
 					return(
-						<li key={weekday.name}> 
-							<span>{weekday.kanji}</span>
+						<li key={weekday.name}>
+						{ isWeekDay ? (
+								<span className="color-red">{weekday.kanji}</span>
+							):(
+								<span className="color-blue">{weekday.kanji}</span>
+							)
+						}
 						</li>
 						);
 				})
