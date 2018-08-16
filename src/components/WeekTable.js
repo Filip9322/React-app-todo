@@ -59,14 +59,15 @@ class WeekDaysNav extends Component {
 }
 
 class TaskPerWeekList extends Component {
-
 	render(){
-		var dailyTask = dataJSON.taskDay;
+		var dailyTask = Object.keys(dataJSON);
+		console.log(dailyTask);
 		return (
+			//<tr>sdasd</tr>kk
 			dailyTask.map((itemTask) => {
 				return(
 					<tr>
-						<td>Tarea 1</td>
+						<td>{ itemTask }</td>
 						<td>O</td>
 						<td>X</td>
 					</tr>
