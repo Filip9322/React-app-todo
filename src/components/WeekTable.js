@@ -12,38 +12,42 @@ import './WeekTable.css';
 
 // }
 class WeekDaysNav extends React.Component {
+	constructor(){
+		super();
+		this.isToday   = new Date();
+		this.arrayWeekDate = this.getWeekDates(this.isToday.getDay(),this.isToday.getDate());
+	}
 	getWeekDates(weekDay, weekDate){
 		let weekDays = [];
 		for(let i = 0 ; i < 8 ; i++){
 			let number   = i - weekDay + weekDate; 
 			weekDays.push(number);
 		}
-		console.log(weekDay);
+		console.log(weekDays);
 		return weekDays
 	}
 
 	render() {
 		return(
 		<table>
+		<tbody>
 			<tr>
 				<th>Weekday</th>
 			{
 				WEEKDAYS.map((weekday) =>{
 					let isWeekDay = weekday.weekday;
-					let isToday   = new Date();
-					let arrayDate = this.getWeekDates(isToday.getDay,isToday.getDate);
 					return(
 						<th key={weekday.name}>
-						{ isWeekDay && isToday.getDay() == weekday.jsnumber ? (
+						{ isWeekDay && this.isToday.getDay() == weekday.jsnumber ? (
 								<span area-day = {weekday.name}
-								className="color-green">{weekday.kanji}<br/>{ isToday.getDate() }</span>
+								className="color-green">{weekday.kanji}<br/>{ this.isToday.getDate() }</span>
 						)
 						:isWeekDay ? (
 								<span area-day = {weekday.name}
-								className="color-red">{weekday.kanji}<br/>{ arrayDate[0]}</span>
+								className="color-red">{weekday.kanji}<br/>{ this.arrayWeekDate[weekday.jsnumber]}</span>
 							):(
 								<span area-day = {weekday.name}
-								className="color-blue">{weekday.kanji}<br/>{ arrayDate[0]}</span>
+								className="color-blue">{weekday.kanji}<br/>{ this.arrayWeekDate[weekday.jsnumber]}</span>
 							)
 						}
 						</th>
@@ -66,6 +70,7 @@ class WeekDaysNav extends React.Component {
 				<td>O</td>
 				<td>X</td>
 			</tr>
+		</tbody>
 		</table>
 		);
 	}
