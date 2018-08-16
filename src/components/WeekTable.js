@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 import './WeekTable.css';
-
+import * as dataJSON from './../todo_track_task.json';
 // class DateDayMonthYear extends React.Component {
 // 	constructor () {
 // 		super();
@@ -11,66 +11,68 @@ import './WeekTable.css';
 // 	};
 
 // }
-class WeekDaysNav extends React.Component {
+class WeekDaysNav extends Component {
 	constructor(){
+		console.log(dataJSON);
 		super();
-		this.isToday   = new Date();
-		this.arrayWeekDate = this.getWeekDates(this.isToday.getDay(),this.isToday.getDate());
+		this.isToday       = new Date();
+		this.arrayWeekDate = this.getWeekDates( this.isToday.getDay() , this.isToday.getDate() );
 	}
 	getWeekDates(weekDay, weekDate){
 		let weekDays = [];
+		
 		for(let i = 0 ; i < 8 ; i++){
 			let number   = i - weekDay + weekDate; 
 			weekDays.push(number);
 		}
-		console.log(weekDays);
+		
 		return weekDays
 	}
 
 	render() {
 		return(
 		<table>
-		<tbody>
-			<tr>
-				<th>Weekday</th>
-			{
-				WEEKDAYS.map((weekday) =>{
-					let isWeekDay = weekday.weekday;
-					return(
-						<th key={weekday.name}>
-						{ isWeekDay && this.isToday.getDay() == weekday.jsnumber ? (
-								<span area-day = {weekday.name}
-								className="color-green">{weekday.kanji}<br/>{ this.isToday.getDate() }</span>
-						)
-						:isWeekDay ? (
-								<span area-day = {weekday.name}
-								className="color-red">{weekday.kanji}<br/>{ this.arrayWeekDate[weekday.jsnumber]}</span>
-							):(
-								<span area-day = {weekday.name}
-								className="color-blue">{weekday.kanji}<br/>{ this.arrayWeekDate[weekday.jsnumber]}</span>
+			<tbody>
+				<tr>
+					<th>Weekday</th>
+				{
+					WEEKDAYS.map((weekday) =>{
+						let isWeekend = weekday.weekday;
+						return(
+							<th key={weekday.name}>
+							{ isWeekend && this.isToday.getDay() === weekday.jsnumber ? (
+									<span area-day = {weekday.name}
+									className="color-green">{weekday.kanji}<br/>{ this.isToday.getDate() }</span>
 							)
-						}
-						</th>
-						);
-				})
-			}
-			</tr>
-			<tr>
-				<td>Tarea 1</td>
-				<td>O</td>
-				<td>X</td>
-			</tr>
-			<tr>
-				<td>Tarea 2</td>
-				<td>O</td>
-				<td>X</td>
-			</tr>
-			<tr>
-				<td>Tarea 3</td>
-				<td>O</td>
-				<td>X</td>
-			</tr>
-		</tbody>
+							:isWeekend ? (
+									<span area-day = {weekday.name}
+									className="color-red">{weekday.kanji}<br/>{ this.arrayWeekDate[weekday.jsnumber]}</span>
+								):(
+									<span area-day = {weekday.name}
+									className="color-blue">{weekday.kanji}<br/>{ this.arrayWeekDate[weekday.jsnumber]}</span>
+								)
+							}
+							</th>
+							);
+					})
+				}
+				</tr>
+				<tr>
+					<td>Tarea 1</td>
+					<td>O</td>
+					<td>X</td>
+				</tr>
+				<tr>
+					<td>Tarea 2</td>
+					<td>O</td>
+					<td>X</td>
+				</tr>
+				<tr>
+					<td>Tarea 3</td>
+					<td>O</td>
+					<td>X</td>
+				</tr>
+			</tbody>
 		</table>
 		);
 	}
