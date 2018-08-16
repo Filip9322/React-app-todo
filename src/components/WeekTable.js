@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './WeekTable.css';
 import * as dataJSON from './../todo_track_task.json';
-// class DateDayMonthYear extends React.Component {
-// 	constructor () {
-// 		super();
 
-// 		var DateToday = new Date(),
-// 		console.log(DateToday),
-// 	};
-
-// }
 class WeekDaysNav extends Component {
+	
 	constructor(){
-		console.log(dataJSON);
 		super();
 		this.isToday       = new Date();
 		this.arrayWeekDate = this.getWeekDates( this.isToday.getDay() , this.isToday.getDate() );
 	}
+
 	getWeekDates(weekDay, weekDate){
 		let weekDays = [];
 		
@@ -57,28 +50,38 @@ class WeekDaysNav extends Component {
 					})
 				}
 				</tr>
-				<tr>
-					<td>Tarea 1</td>
-					<td>O</td>
-					<td>X</td>
-				</tr>
-				<tr>
-					<td>Tarea 2</td>
-					<td>O</td>
-					<td>X</td>
-				</tr>
-				<tr>
-					<td>Tarea 3</td>
-					<td>O</td>
-					<td>X</td>
-				</tr>
+			<TaskPerWeekList />	
 			</tbody>
 		</table>
 		);
 	}
 
 }
-//{if (isToday == weekday.jsnumber) { 'background-green' }}
+
+class TaskPerWeekList extends Component {
+
+	render(){
+		var dailyTask = dataJSON.taskDay;
+		return (
+			dailyTask.map((itemTask) => {
+				return(
+					<tr>
+						<td>Tarea 1</td>
+						<td>O</td>
+						<td>X</td>
+					</tr>
+				);
+			})
+		);
+	}
+}
+
+TaskPerWeekList.propTypes = {
+  title:  PropTypes.string,
+  author: PropTypes.string,
+  type:   PropTypes.oneOf(['video', 'audio']),
+}
+
 const WEEKDAYS = [
   {name: 'Domingo'    ,kanji: '日', weekday: false , jsnumber: 0},
   {name: 'Lunes'      ,kanji: '月', weekday: true  , jsnumber: 1},
