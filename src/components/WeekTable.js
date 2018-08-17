@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './WeekTable.css';
-import * as dataJSON from './../todo_track_task.json';
+import * as dataJSON from './../tasks.json';
 
 class WeekDaysNav extends Component {
 	
@@ -92,5 +92,25 @@ const WEEKDAYS = [
   {name: 'Viernes'    ,kanji: '金', weekday: true  , jsnumber: 5},
   {name: 'Sabado'     ,kanji: '土', weekday: false , jsnumber: 6},
 ];
+const STATES = [
+	"StateToDo": {
+    {
+      "_id"     : 1,
+      "value"  : "",
+      "description": "todo"
+    },
+    "StateDone" : {
+      "_id"   : 2,
+      "value": "O",
+      "description": "done"
+    },
+    "StateUndone" : {
+      "_id"   : 3,
+      "value": "X",
+      "description": "undone"
+    }
+  ],
+];
+
 
 export default WeekDaysNav;
