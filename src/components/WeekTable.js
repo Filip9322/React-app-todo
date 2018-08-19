@@ -33,7 +33,7 @@ class WeekDaysNav extends Component {
 						let isWeekend = weekday.weekday;
 						return(
 							<th key={weekday.name}>
-							{ isWeekend && this.isToday.getDay() === weekday.jsnumber ? (
+							{ this.isToday.getDay() === weekday.jsnumber ? (
 									<span area-day = {weekday.name}
 									className="color-green">{weekday.kanji}<br/>{ this.isToday.getDate() }</span>
 							)
@@ -59,15 +59,19 @@ class WeekDaysNav extends Component {
 }
 
 class TaskPerWeekList extends Component {
+	handleOver = (event) =>{
+		var timer;
+		timer = setTimeout(() => {
+    		console.log('click');
+		} , 1000);
+	}
 	render(){
 		var dailyTask = Object.keys(dataJSON);
-		console.log(dailyTask);
 		return (
-			//<tr>sdasd</tr>kk
 			dailyTask.map((itemTask) => {
 				return(
 					<tr>
-						<td>{ itemTask }</td>
+						<td onMouseOver = { this.handleOver }>{ itemTask }</td>
 						<td>O</td>
 						<td>X</td>
 					</tr>
@@ -94,7 +98,6 @@ const WEEKDAYS = [
 ];
 const STATES = [
 	"StateToDo": {
-    {
       "_id"     : 1,
       "value"  : "",
       "description": "todo"
@@ -109,7 +112,6 @@ const STATES = [
       "value": "X",
       "description": "undone"
     }
-  ],
 ];
 
 
