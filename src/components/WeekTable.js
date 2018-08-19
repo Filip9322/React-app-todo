@@ -9,7 +9,7 @@ class WeekTable extends Component {
 			<table>
 				<tbody>
 					<WeekDaysNav weekdays = {WEEKDAYS}/>
-					<TaskPerWeekList />	
+					<TaskPerWeekList dailyTasks = {Object.keys(dataJSON)}/>	
 				</tbody>
 			</table>
 		);
@@ -31,7 +31,6 @@ class WeekDaysNav extends Component {
 			let number   = i - weekDay + weekDate; 
 			weekDaysDates.push(number);
 		}
-		
 		return weekDaysDates;
 	}
 
@@ -67,19 +66,22 @@ class WeekDaysNav extends Component {
 }
 
 class TaskPerWeekList extends Component {
-	handleOver = (event) =>{
+	constructor(props){
+		super(props);
+		this.arrayTasks = this.props.dailyTasks;
+	}
+	handleOver = (data, e) =>{
 		var timer;
 		timer = setTimeout(() => {
-    		console.log('click:');
+    		console.log('click: '+ data);
 		} , 1000);
 	}
 	render(){
-		var dailyTask = Object.keys(dataJSON);
 		return (
-			dailyTask.map((itemTask) => {
+			this.arrayTasks.map((itemTask) => {
 				return(
 					<tr>
-						<td onMouseOver = { this.handleOver }>{ itemTask }</td>
+						<td onMouseOver = { this.handleOver.bind(this,itemTask) }>{ itemTask }</td>
 						<td>O</td>
 						<td>X</td>
 					</tr>
