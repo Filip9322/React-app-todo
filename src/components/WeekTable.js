@@ -3,6 +3,19 @@ import PropTypes from 'prop-types';
 import './WeekTable.css';
 import * as dataJSON from './../tasks.json';
 
+class WeekTable extends Component {
+	render(){
+		return (
+			<table>
+				<tbody>
+					<WeekDaysNav />
+					<TaskPerWeekList />	
+				</tbody>
+			</table>
+		);
+	};
+
+}
 class WeekDaysNav extends Component {
 	
 	constructor(){
@@ -24,8 +37,6 @@ class WeekDaysNav extends Component {
 
 	render() {
 		return(
-		<table>
-			<tbody>
 				<tr>
 					<th>Weekday</th>
 				{
@@ -50,9 +61,6 @@ class WeekDaysNav extends Component {
 					})
 				}
 				</tr>
-			<TaskPerWeekList />	
-			</tbody>
-		</table>
 		);
 	}
 
@@ -80,6 +88,7 @@ class TaskPerWeekList extends Component {
 		);
 	}
 }
+
 
 TaskPerWeekList.propTypes = {
   title:  PropTypes.string,
@@ -115,4 +124,4 @@ const STATES = [
 ];
 
 
-export default WeekDaysNav;
+export default WeekTable;
