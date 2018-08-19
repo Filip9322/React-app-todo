@@ -8,7 +8,7 @@ class WeekTable extends Component {
 		return (
 			<table>
 				<tbody>
-					<WeekDaysNav />
+					<WeekDaysNav weekdays = {WEEKDAYS}/>
 					<TaskPerWeekList />	
 				</tbody>
 			</table>
@@ -18,21 +18,21 @@ class WeekTable extends Component {
 }
 class WeekDaysNav extends Component {
 	
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.isToday       = new Date();
 		this.arrayWeekDate = this.getWeekDates( this.isToday.getDay() , this.isToday.getDate() );
 	}
 
 	getWeekDates(weekDay, weekDate){
-		let weekDays = [];
+		let weekDaysDates = [];
 		
 		for(let i = 0 ; i < 8 ; i++){
 			let number   = i - weekDay + weekDate; 
-			weekDays.push(number);
+			weekDaysDates.push(number);
 		}
 		
-		return weekDays
+		return weekDaysDates;
 	}
 
 	render() {
@@ -40,7 +40,7 @@ class WeekDaysNav extends Component {
 				<tr>
 					<th>Weekday</th>
 				{
-					WEEKDAYS.map((weekday) =>{
+					this.props.weekdays.map((weekday) =>{
 						let isWeekend = weekday.weekday;
 						return(
 							<th key={weekday.name}>
@@ -70,7 +70,7 @@ class TaskPerWeekList extends Component {
 	handleOver = (event) =>{
 		var timer;
 		timer = setTimeout(() => {
-    		console.log('click');
+    		console.log('click:');
 		} , 1000);
 	}
 	render(){
@@ -90,11 +90,11 @@ class TaskPerWeekList extends Component {
 }
 
 
-TaskPerWeekList.propTypes = {
+/*TaskPerWeekList.propTypes = {
   title:  PropTypes.string,
   author: PropTypes.string,
   type:   PropTypes.oneOf(['video', 'audio']),
-}
+}*/
 
 const WEEKDAYS = [
   {name: 'Domingo'    ,kanji: '日', weekday: false , jsnumber: 0},
