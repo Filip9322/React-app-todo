@@ -69,11 +69,13 @@ class TaskPerWeekList extends Component {
 	constructor(props){
 		super(props);
 		this.arrayTasks = this.props.dailyTasks;
+		this.state      = { taskDetails : ''}
 	}
 	handleOver = (data, e) =>{
 		var timer;
 		timer = setTimeout(() => {
-    		console.log('click: '+ data);
+			this.setState({ taskDetails : data });
+    		console.log('click: ' + this.state.taskDetails );
 		} , 1000);
 	}
 	render(){
