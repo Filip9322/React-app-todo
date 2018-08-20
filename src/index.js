@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App       from './components/App';
-import WeekTable from './components/WeekTable'
+import TodoTable from './components/TodoTable';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<App />, 
 	document.getElementById('root'));
 
-ReactDOM.render(<WeekTable/>, 
+ReactDOM.render(<TodoTable/>, 
 	document.getElementById('week-table')
 );
 

@@ -4,12 +4,17 @@ import './WeekTable.css';
 import * as dataJSON from './../tasks.json';
 
 class WeekTable extends Component {
+	constructor(props){
+		super(props);
+		this.state = { detailedTask : this.props.detailedTask};
+
+	}
 	render(){
 		return (
 			<table>
 				<tbody>
 					<WeekDaysNav weekdays = {WEEKDAYS}/>
-					<TaskPerWeekList dailyTasks = {Object.keys(dataJSON)}/>	
+					<TaskPerWeekList dailyTasks = {Object.keys(dataJSON)} detailedTask={this.state.detailedTask} />	
 				</tbody>
 			</table>
 		);
@@ -69,13 +74,13 @@ class TaskPerWeekList extends Component {
 	constructor(props){
 		super(props);
 		this.arrayTasks = this.props.dailyTasks;
-		this.state      = { taskDetails : ''}
+		this.state      = this.props.detailedTask;
 	}
 	handleOver = (data, e) =>{
 		var timer;
 		timer = setTimeout(() => {
 			this.setState({ taskDetails : data });
-    		console.log('click: ' + data);
+    		console.log(this.state);
 		} , 1000);
 	}
 	render(){
@@ -95,9 +100,7 @@ class TaskPerWeekList extends Component {
 
 
 /*TaskPerWeekList.propTypes = {
-  title:  PropTypes.string,
-  author: PropTypes.string,
-  type:   PropTypes.oneOf(['video', 'audio']),
+  detailedTask:  props.detailedTask,
 }*/
 
 const WEEKDAYS = [
