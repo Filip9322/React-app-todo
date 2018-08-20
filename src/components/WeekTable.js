@@ -75,7 +75,7 @@ class TaskPerWeekList extends Component {
 		var timer;
 		timer = setTimeout(() => {
 			this.setState({ taskDetails : data });
-    		console.log('click: ' + this.state.taskDetails );
+    		console.log('click: ' + data);
 		} , 1000);
 	}
 	render(){
@@ -83,7 +83,7 @@ class TaskPerWeekList extends Component {
 			this.arrayTasks.map((itemTask) => {
 				return(
 					<tr>
-						<td onMouseOver = { this.handleOver.bind(this,itemTask) }>{ itemTask }</td>
+						<td onMouseOver = { this.handleOver.bind(this,dataJSON[itemTask]._id) }>{ itemTask }</td>
 						<td>O</td>
 						<td>X</td>
 					</tr>
