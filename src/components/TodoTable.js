@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import WeekTable from './WeekTable';
+import DetailsTask from './DetailedTask';
 
 class TodoTable extends Component {
 	constructor(props){
 		super(props);
-		this.state      = { taskDetails : ''};
+		this.state      = { taskDetails : 'hola'};
 	}
 	render(){
 		return(
-			<WeekTable detailedTask = { this.state.taskDetails } />
+			<div>
+				<WeekTable   detailedTask = { this.state.taskDetails } />
+				<DetailsTask detailedTask = { this.state.taskDetails } />
+			</div>
 		);
 	}
 }
 
-export default WeekTable;
+export default TodoTable;

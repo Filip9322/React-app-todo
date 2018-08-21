@@ -7,7 +7,6 @@ class WeekTable extends Component {
 	constructor(props){
 		super(props);
 		this.state = { detailedTask : this.props.detailedTask};
-
 	}
 	render(){
 		return (
@@ -74,13 +73,13 @@ class TaskPerWeekList extends Component {
 	constructor(props){
 		super(props);
 		this.arrayTasks = this.props.dailyTasks;
-		this.state      = this.props.detailedTask;
+		this.state      = { detailedTask : this.props.detailedTask};
 	}
 	handleOver = (data, e) =>{
 		var timer;
 		timer = setTimeout(() => {
 			this.setState({ taskDetails : data });
-    		console.log(this.state);
+    		console.log(this.state.taskDetails);
 		} , 1000);
 	}
 	render(){

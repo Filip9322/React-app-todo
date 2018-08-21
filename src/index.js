@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(<App />, 
 	document.getElementById('root'));
 
-ReactDOM.render(<TodoTable/>, 
+ReactDOM.render(<TodoTable />, 
 	document.getElementById('week-table')
 );
 
