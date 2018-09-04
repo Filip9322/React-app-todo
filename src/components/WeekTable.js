@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import './WeekTable.css';
 import * as dataJSON from './../tasks.json';
 
@@ -73,13 +73,34 @@ class TaskPerWeekList extends Component {
 	constructor(props){
 		super(props);
 		this.arrayTasks = this.props.dailyTasks;
-		this.state      = { detailedTask : this.props.detailedTask};
+		this.state      = { detailedTask : this.props.detailedTask , counter : 0 };
+	}
+	componentWillMount() {
+		console.log('Component WILL MOUNT!')
+	}
+	componentDidMount() {
+		console.log('Component DID MOUNT!')
+	}
+	componentWillReceiveProps(newProps) {    
+		console.log('Component WILL RECIEVE PROPS!', newProps);
+	}
+	shouldComponentUpdate(newProps, newState) {
+		console.log(newProps, newState.counter <= 10);
+		return newState.counter <= 10;
+	}
+	componentDidUpdate(prevProps, prevState) {
+		console.log('Component DID UPDATE!', prevProps, prevState)
+	}
+
+	componentWillUnmount() {
+		console.log('Component WILL UNMOUNT!')
 	}
 	handleOver = (data, e) =>{
 		var timer;
 		timer = setTimeout(() => {
 			this.setState({ taskDetails : data });
-    		console.log(this.state.taskDetails);
+			this.setState({ counter : this.state.counter + 1 });
+    		//console.log(this.state.taskDetails);
 		} , 1000);
 	}
 	render(){
@@ -88,7 +109,7 @@ class TaskPerWeekList extends Component {
 				return(
 					<tr>
 						<td onMouseOver = { this.handleOver.bind(this,dataJSON[itemTask]._id) }>{ itemTask }</td>
-						<td>O</td>
+						<td>{ this.state.counter }</td>
 						<td>X</td>
 					</tr>
 				);
@@ -111,23 +132,5 @@ const WEEKDAYS = [
   {name: 'Viernes'    ,kanji: '金', weekday: true  , jsnumber: 5},
   {name: 'Sabado'     ,kanji: '土', weekday: false , jsnumber: 6},
 ];
-const STATES = [
-	"StateToDo": {
-      "_id"     : 1,
-      "value"  : "",
-      "description": "todo"
-    },
-    "StateDone" : {
-      "_id"   : 2,
-      "value": "O",
-      "description": "done"
-    },
-    "StateUndone" : {
-      "_id"   : 3,
-      "value": "X",
-      "description": "undone"
-    }
-];
-
 
 export default WeekTable;
