@@ -12,7 +12,7 @@ class DetailsFromTask extends Component {
 				<div className = "detailed-task">
 					<label>{ this.props.detailedTask }</label>
 				</div>
-				<InfoStates states = {STATES} />
+				<InfoStates states = { Object.entries(STATES) } />
 			</fieldset>
 		);
 	}
@@ -25,29 +25,40 @@ class InfoStates extends Component {
 					this.props.states.map((state) =>{
 						return(
 							<div className = "state-item">
-								<p>{ state }</p>
+								<h3>{ state[1]["name"] }</h3>
+								<p>ID : { state[1]["_id"] }<br/>
+									value: { state[1]["value"] }<br/>
+									description: { state[1]["description"] }
+								</p>
 							</div>
 						);
 					})
+					//STATES.map((state) =>{
+						/*
+
+					})*/
 				}
 			</div>
 		);
 	}
 }
 const STATES = [
-	"StateToDo": {
-      "_id"     : 1,
+	{
+      "name"   : "StateToDo",
+      "_id"    : 1,
       "value"  : "",
       "description": "todo"
     },
-    "StateDone" : {
+    {
+      "name"  : "StateDone",
       "_id"   : 2,
-      "value": "O",
+      "value" : "O",
       "description": "done"
     },
-    "StateUndone" : {
+    {
+      "name"  : "StateUndone",
       "_id"   : 3,
-      "value": "X",
+      "value" : "X",
       "description": "undone"
     }
 ];
